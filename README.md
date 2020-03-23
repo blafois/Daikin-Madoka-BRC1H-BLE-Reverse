@@ -2,6 +2,8 @@
 
 `Madoka` is the friendly commercial name given by Daikin to the `BRC1H` controller. This controller integrates a BLE chip, allowing control from a smartphone. The application is available freely for iOS and Android, called `Madoka Assistant`. This application is coded in React Native.
 
+![Madoka](master/images/brc1h.jpg)
+
 My reverse engineering work was done by observing exchanges between the phone and my `Madoka` controllers, using a home-made BLE relay.
 By playing with parameters and values, I managed to reverse most of the protocol.
 
