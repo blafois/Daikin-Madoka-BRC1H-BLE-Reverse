@@ -19,9 +19,11 @@ This article assumes that you have basic BLE knowledge (services, characteristic
 
 The final goal of this study is to implement an [OpenHAB](https://www.openhab.org) binding in my home-automation infrastructure.
 
+OpenHAB binding I implemented after reversing the protocol: https://github.com/openhab/openhab-addons/tree/main/bundles/org.openhab.binding.bluetooth.daikinmadoka
+
 The protocol being made available here - it can be implemented by anybody to integrate it in its HomeAutomation.
 
-I also used the protocol with an ESP32 and the amazing firmware [ESP32-BLE2MQTT(https://github.com/shmuelzon/esp32-ble2mqtt).
+I also used the protocol with an ESP32 and the amazing firmware [ESP32-BLE2MQTT](https://github.com/shmuelzon/esp32-ble2mqtt).
 
 ## BLE Advertising, Detection and Pairing
 
@@ -334,6 +336,15 @@ For parameter functions, all parameters are not mandatory.
 0x21 |  0x01  | heatingFanSpeed                 | Fan speed in HEAT mode
 ```
 
+#### Function 16928 (0x42 0x20) - "DisableCleanFilterIndicator()"
+
+* Takes **one** argument.
+
+```
+ ID  |  Size  | Name                            | Description
+0x51 |  0x01  | DisableCleanFilterIndicator     | 1 = Disable Indicator.
+```
+
 #### Function 272 (0x01 0x10) - "GetSensorInformation()"
 
 * Takes **no** argument.
@@ -357,3 +368,35 @@ For parameter functions, all parameters are not mandatory.
 0x45 |  0x03  | toshibaVersion                  | Release - Ex: 3.2.0
 0x46 |  0x02  | bleVersion                      | BLE Ctrl Version - Ex: 5.11
 ```
+
+#### Function 770 (0x03 0x02) - "GetEyeBrightness()"
+
+* Takes **one** argument.
+
+```
+ ID  |  Size  | Name                            | Description
+0x33 |  0x01  | EyeBrightness                   | Value = 0 to query
+```
+
+* Returns:
+
+```
+ ID  |  Size  | Name                            | Description
+0x33 |  0x01  | EyeBrightness                   | Value = 0 to 19.
+```
+
+#### Function 17154 (0x43 0x02) - "SetEyeBrightness()"
+
+* Takes **one** argument.
+
+```
+ ID  |  Size  | Name                            | Description
+0x33 |  0x01  | EyeBrightness                   | Value = 0 to 19.
+```
+
+
+
+
+
+
+
